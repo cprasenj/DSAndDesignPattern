@@ -6,6 +6,10 @@ public class Node<T> {
     private Node<T> leftChild;
     private Node<T> rightChild;
 
+    public Node (T data) {
+        this.data = data;
+    }
+
     public Node<T> getAncestor() {
         return ancestor;
     }
@@ -28,5 +32,9 @@ public class Node<T> {
 
     public void setRightChild(Node<T> rightChild) {
         this.rightChild = rightChild;
+    }
+
+    public T getData() {
+        return data;
     }
 }

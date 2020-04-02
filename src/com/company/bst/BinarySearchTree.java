@@ -3,12 +3,27 @@ package com.company.bst;
 import com.company.tree.Node;
 import com.company.tree.Tree;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
-public class BinarySearchTree<T> extends Tree<T> {
-    public Node<T> insert(Node<T> node) {
-        return null;
+public class BinarySearchTree<T extends Comparator> extends Tree<T> {
+
+    public BinarySearchTree() {
+        super();
+    }
+    public BinarySearchTree<T> insert(T data) {
+        Node<T> node = new Node(data);
+        if (getRoot() == null) {
+            setRoot(node);
+        }
+        else if (node.getData().compare(node, getRoot()) < 0) {
+            getRoot().setLeftChild(node);
+        }
+        else if (node.getData().compare(node, getRoot()) > 0) {
+            getRoot().setRightChild(node);
+        }
+        return this;
     }
 
     public Node<T> delete(T data) {
@@ -20,7 +35,7 @@ public class BinarySearchTree<T> extends Tree<T> {
     }
 
     public Integer size() {
-        return null;
+        return 1;
     }
 
     public Integer height() {
