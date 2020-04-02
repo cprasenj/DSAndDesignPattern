@@ -1,6 +1,6 @@
 package com.company.tree;
 
-public abstract class Tree<T> {
+public abstract class Tree<T extends Comparable<T>> {
     private Node<T> root;
 
     public Tree () {

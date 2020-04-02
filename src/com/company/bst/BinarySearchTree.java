@@ -3,26 +3,23 @@ package com.company.bst;
 import com.company.tree.Node;
 import com.company.tree.Tree;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
-public class BinarySearchTree<T extends Comparator> extends Tree<T> {
+import static java.util.Objects.nonNull;
+
+public class BinarySearchTree<T extends Comparable<T>> extends Tree<T> {
 
     public BinarySearchTree() {
         super();
     }
+
     public BinarySearchTree<T> insert(T data) {
-        Node<T> node = new Node(data);
+        Node<T> node = new Node<>(data);
         if (getRoot() == null) {
             setRoot(node);
         }
-        else if (node.getData().compare(node, getRoot()) < 0) {
-            getRoot().setLeftChild(node);
-        }
-        else if (node.getData().compare(node, getRoot()) > 0) {
-            getRoot().setRightChild(node);
-        }
+        getRoot().insertChild(node);
         return this;
     }
 
@@ -35,7 +32,10 @@ public class BinarySearchTree<T extends Comparator> extends Tree<T> {
     }
 
     public Integer size() {
-        return 1;
+        if (nonNull(getRoot())) {
+            return getRoot().getChildrenCount() + 1;
+        }
+        return 0;
     }
 
     public Integer height() {

@@ -5,18 +5,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BinarySearchTreeTest {
-    private BinarySearchTree bst;
 
     @Test
     void insert() {
-        int root = 10;
-        bst = new BinarySearchTree();
-        bst.insert(root);
-
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(10);
         assertEquals(1, bst.size());
-        int child = 5;
-        bst.insert(child);
 
+        bst.insert(5);
         assertEquals(2, bst.size());
+
+        bst.insert(2);
+        assertEquals(3, bst.size());
     }
 }
